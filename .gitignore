@@ -21,3 +21,5 @@ Thumbs.db
 
 # Ignore yarn.lock for Yarn
 yarn.lock
+*storybook.log
+storybook-static
