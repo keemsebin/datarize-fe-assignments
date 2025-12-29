@@ -17,18 +17,7 @@ export const PurchaseFrequencyChart = () => {
       <QueryErrorResetBoundary>
         {({ reset }) => (
           <ErrorBoundary onRetry={reset}>
-            <Suspense
-              fallback={
-                <Flex
-                  dir="col"
-                  alignItems="center"
-                  justifyContent="center"
-                  className="h-[300px] w-full"
-                >
-                  <Loading size="lg" />
-                </Flex>
-              }
-            >
+            <Suspense fallback={<Loading size="lg" className="h-[300px] w-full" />}>
               <BarChart dateRange={dateRange} />
             </Suspense>
           </ErrorBoundary>
