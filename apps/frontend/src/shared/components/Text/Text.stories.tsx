@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Text } from './Text'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Text } from './Text';
 
 const meta = {
   title: 'components/Text',
@@ -12,10 +12,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Text>
+} satisfies Meta<typeof Text>;
 
-export default meta
-type Story = StoryObj<typeof Text>
+export default meta;
+type Story = StoryObj<typeof Text>;
 
 export const Basic: Story = {
   args: {
@@ -37,8 +37,8 @@ export const Basic: Story = {
       options: ['h1', 'h2', 'h3', 'p', 'label', 'span'],
     },
   },
-  render: (args: Story['args']) => <Text {...args} />,
-}
+  render: (args) => <Text {...args} />,
+};
 
 export const Display: Story = {
   args: {
@@ -46,7 +46,7 @@ export const Display: Story = {
     weight: 'bold',
     children: 'Display 텍스트',
   },
-}
+};
 
 export const Title: Story = {
   args: {
@@ -54,7 +54,7 @@ export const Title: Story = {
     weight: 'semibold',
     children: 'Title 텍스트',
   },
-}
+};
 
 export const Heading: Story = {
   args: {
@@ -62,7 +62,7 @@ export const Heading: Story = {
     weight: 'semibold',
     children: 'Heading 텍스트',
   },
-}
+};
 
 export const Body: Story = {
   args: {
@@ -70,7 +70,7 @@ export const Body: Story = {
     weight: 'regular',
     children: 'Body 텍스트',
   },
-}
+};
 
 export const Label: Story = {
   args: {
@@ -78,5 +78,4 @@ export const Label: Story = {
     weight: 'medium',
     children: 'Label 텍스트',
   },
-}
-
+};

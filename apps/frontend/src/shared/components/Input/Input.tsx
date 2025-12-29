@@ -7,6 +7,7 @@ type InputProps = {
    */
   className?: string;
 } & ComponentProps<'input'>;
+
 export const Input = ({ className, ...props }: InputProps) => {
   return (
     <input

@@ -118,11 +118,11 @@ export const Flex = <T extends ElementType = 'div'>({
         JUSTIFY_CONTENT[justifyContent],
         WRAP[wrap],
         GAP[gap as keyof typeof GAP],
-        className
+        className,
       )}
-      {...(props as ComponentPropsWithoutRef<T>)}
+      {...props}
     >
       {children}
     </Container>
   );
-}
+};
