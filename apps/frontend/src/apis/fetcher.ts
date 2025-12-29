@@ -22,11 +22,7 @@ export const instance = ky.create({
             errorBody && typeof errorBody === 'object' && 'error' in errorBody
               ? errorBody.error
               : '';
-          throw new Error(
-            getUserFriendlyErrorMessage({
-              response: { status: response.status, body: { error: errorMessage } },
-            }),
-          );
+          throw new Error(getUserFriendlyErrorMessage(errorMessage, response.status));
         }
         return response;
       },
