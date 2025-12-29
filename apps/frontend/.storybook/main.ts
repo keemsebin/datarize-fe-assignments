@@ -13,9 +13,25 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   "stories": [
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../src/**/*.mdx"
   ],
-  "addons": [],
-  "framework": getAbsolutePath('@storybook/react-vite')
+  "docs": {
+    autodocs: 'tag',
+  },
+  "addons": [
+    getAbsolutePath('@storybook/addon-docs'),
+  ],
+  "framework": {
+    name: getAbsolutePath('@storybook/react-vite'),
+    options: {},
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+    },
+  },
 };
 export default config;
