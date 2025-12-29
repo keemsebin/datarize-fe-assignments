@@ -19,8 +19,13 @@ export const useDateRange = () => {
     setDateRange((prev) => ({ ...prev, [name]: value }));
   };
 
+  const resetDateRange = () => {
+    setDateRange(DEFAULT_DATE_RANGE);
+  };
+
   return {
     dateRange,
     handleDateChange,
+    resetDateRange,
   };
 };

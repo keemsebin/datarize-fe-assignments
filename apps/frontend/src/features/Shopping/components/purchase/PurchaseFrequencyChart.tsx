@@ -9,14 +9,19 @@ import { useDateRange } from '../../hooks/useDateRange';
 import { BarChart } from './BarChart';
 
 export const PurchaseFrequencyChart = () => {
-  const { dateRange, handleDateChange } = useDateRange();
+  const { dateRange, handleDateChange, resetDateRange } = useDateRange();
 
   return (
     <Flex dir="col" gap={6} className="w-full">
       <DateRangePicker dateRange={dateRange} onDateChange={handleDateChange} />
       <QueryErrorResetBoundary>
         {({ reset }) => (
-          <ErrorBoundary onReset={reset}>
+          <ErrorBoundary
+            onReset={() => {
+              resetDateRange();
+              reset();
+            }}
+          >
             <Suspense fallback={<Loading size="lg" className="h-[300px] w-full" />}>
               <BarChart dateRange={dateRange} />
             </Suspense>
