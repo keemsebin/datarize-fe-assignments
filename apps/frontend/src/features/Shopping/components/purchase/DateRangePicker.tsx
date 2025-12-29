@@ -1,14 +1,10 @@
 import { Flex } from '@/shared/components/Flex/Flex';
 import { Input } from '@/shared/components/Input';
 import { Text } from '@/shared/components/Text';
-
-type DateRange = {
-  from: string;
-  to: string;
-};
+import { PurchaseFrequencyRequest } from '../../api/shopping.types';
 
 type DateRangePickerProps = {
-  dateRange: DateRange;
+  dateRange: PurchaseFrequencyRequest;
   onDateChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

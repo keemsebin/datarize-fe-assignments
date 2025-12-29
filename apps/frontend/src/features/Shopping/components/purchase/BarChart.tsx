@@ -14,14 +14,10 @@ import { Flex } from '@/shared/components/Flex';
 import { chartColors } from '@/features/Shopping/constants/chartColors';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { shoppingQueryOptions } from '@/features/Shopping/api/shopping.queries';
-
-type DateRange = {
-  from: string;
-  to: string;
-};
+import { PurchaseFrequencyRequest } from '../../api/shopping.types';
 
 type BarChartProps = {
-  dateRange: DateRange;
+  dateRange: PurchaseFrequencyRequest;
 };
 
 export const BarChart = ({ dateRange }: BarChartProps) => {
