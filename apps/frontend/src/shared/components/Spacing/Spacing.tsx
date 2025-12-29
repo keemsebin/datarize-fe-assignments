@@ -3,11 +3,11 @@ import { ComponentProps } from "react";
 
 type SpacingProps = {
   /**
-   * The size of the spacing.
+   * 간격의 크기
    */
   size: number;
   /**
-   * The class name of the spacing.
+   * Spacing 컴포넌트의 className
    */
   className?: string;
 } & ComponentProps<'div'>

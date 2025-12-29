@@ -55,43 +55,43 @@ const GAP = {
 
 type FlexProps<T extends ElementType = 'div'> = {
   /**
-   * The HTML element to use as the container.
+   * 컨테이너로 사용할 HTML 요소
    * @default 'div'
    */
   as?: T;
   /**
-   * Defines the direction of the flex container's main axis.
+   * flex 컨테이너의 주축 방향을 정의
    * @default row
    */
   dir?: keyof typeof DIR;
   /**
-   * Specifies how flex items are aligned along the cross axis.
+   * 교차축을 따라 flex 항목이 정렬되는 방식을 지정
    * @default start
    */
   alignItems?: keyof typeof ALIGN_ITEMS;
   /**
-   * Defines how flex items are distributed along the main axis.
+   * 주축을 따라 flex 항목이 분배되는 방식을 정의
    * @default center
    */
   justifyContent?: keyof typeof JUSTIFY_CONTENT;
   /**
-   * Controls whether flex items should wrap onto multiple lines.
+   * flex 항목이 여러 줄로 줄바꿈되어야 하는지 제어
    * @default nowrap
    */
   wrap?: keyof typeof WRAP;
   /**
-   * Defines the gap between flex items.
-   * Can be a number (Tailwind spacing scale) or string (custom CSS value)
+   * flex 항목 간의 간격을 정의
+   * 숫자(Tailwind spacing scale) 또는 문자열(커스텀 CSS 값)을 사용할 수 있음
    * @example gap={4} → gap-4
    */
   gap?: number;
   /**
-   * Additional CSS classNames to be applied to the container.
+   * 컨테이너에 적용할 추가 CSS className
    * @default ''
    */
   className?: string;
   /**
-   * The child elements to be rendered inside the Flex container.
+   * Flex 컨테이너 내부에 렌더링할 자식 요소
    */
   children: React.ReactNode;
 } & ComponentPropsWithoutRef<T>;

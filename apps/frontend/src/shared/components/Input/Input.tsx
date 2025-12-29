@@ -3,7 +3,7 @@ import { ComponentProps } from 'react';
 
 type InputProps = {
   /**
-   * The class name of the input.
+   * Input 컴포넌트의 className
    */
   className?: string;
 } & ComponentProps<'input'>;

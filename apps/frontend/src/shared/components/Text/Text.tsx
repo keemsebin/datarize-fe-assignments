@@ -24,23 +24,23 @@ const WEIGHT_CLASSES: Record<WeightType, string> = {
 
 export type TextProps<T extends TextElementType = 'p'> = {
   /**
-   * The HTML element or React component to render as.
+   * 렌더링할 HTML 요소 또는 React 컴포넌트
    * @default 'p'
    */
   as?: T
   /**
-   * The type of text, which can be used for styling purposes.
+   * 텍스트의 타입으로, 스타일링 목적으로 사용됨
    * @default 'Body'
    */
   type?: TypographyType
   /**
-   * The font weight of the text.
-   * Common values include 'regular', 'medium', 'semibold', 'bold'.
+   * 텍스트의 폰트 굵기
+   * 일반적인 값: 'regular', 'medium', 'semibold', 'bold'
    * @default 'regular'
    */
   weight?: WeightType
   /**
-   * The content to be displayed inside the text component.
+   * 텍스트 컴포넌트 내부에 표시할 내용
    */
   children: ReactNode
 } & Omit<ComponentPropsWithoutRef<T>, 'as' | 'children' | 'color'>

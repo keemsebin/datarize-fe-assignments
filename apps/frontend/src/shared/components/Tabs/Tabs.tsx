@@ -1,67 +1,67 @@
-import { type ReactNode } from 'react'
-import { TabsContext, useTabsContext } from './Tabs.context'
-import { cn } from '@/shared/utils/cn'
+import { type ReactNode } from 'react';
+import { TabsContext, useTabsContext } from './Tabs.context';
+import { cn } from '@/shared/utils/cn';
 
 type TabsProps = {
   /**
-   * The value of the active tab.
+   * 활성화된 탭의 값
    */
-  value: string
+  value: string;
   /**
-   * The function to call when the value of the active tab changes.
+   * 활성화된 탭의 값이 변경될 때 호출되는 함수
    */
-  onValueChange: (value: string) => void
+  onValueChange: (value: string) => void;
   /**
-   * The children of the Tabs component.
+   * Tabs 컴포넌트의 자식 요소
    */
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export const Tabs = ({ value, onValueChange, children }: TabsProps) => {
   return (
     <TabsContext.Provider value={{ activeTab: value, onTabChange: onValueChange }}>
       <>{children}</>
     </TabsContext.Provider>
-  )
-}
+  );
+};
 
 type TabListProps = {
   /**
-   * The children of the TabList component.
+   * TabList 컴포넌트의 자식 요소
    */
-  children: ReactNode
+  children: ReactNode;
   /**
-   * The className of the TabList component.
+   * TabList 컴포넌트의 className
    */
-  className?: string
-}
+  className?: string;
+};
 
 export const TabList = ({ children, className }: TabListProps) => {
   return (
-    <div className={cn('flex w-full border-b border-gray-200 mb-4', className)} role="tablist">
+    <div className={cn('flex w-full border-b border-gray-200', className)} role="tablist">
       {children}
     </div>
-  )
-}
+  );
+};
 
 type TabsTriggerProps = {
   /**
-   * The value of the TabsTrigger component.
+   * TabsTrigger 컴포넌트의 값
    */
-  value: string
+  value: string;
   /**
-   * The children of the TabsTrigger component.
+   * TabsTrigger 컴포넌트의 자식 요소
    */
-  children: ReactNode
+  children: ReactNode;
   /**
-   * The className of the TabsTrigger component.
+   * TabsTrigger 컴포넌트의 className
    */
-  className?: string
-}
+  className?: string;
+};
 
 export const TabsTrigger = ({ value, children, className }: TabsTriggerProps) => {
-  const { activeTab, onTabChange } = useTabsContext()
-  const isActive = activeTab === value
+  const { activeTab, onTabChange } = useTabsContext();
+  const isActive = activeTab === value;
 
   return (
     <button
@@ -71,41 +71,46 @@ export const TabsTrigger = ({ value, children, className }: TabsTriggerProps) =>
       aria-controls={`panel-${value}`}
       id={`tab-${value}`}
       className={cn(
-        'flex-1 px-8 py-4 font-medium text-xl transition-colors border-b-2 border-transparent text-center cursor-pointer',
-        isActive ? 'text-black border-blue-600 font-semibold' : 'text-gray-400 hover:text-gray-600',
+        'min-w-0 flex-1 cursor-pointer border-b-2 border-transparent px-4 py-4 text-center text-sm font-medium transition-colors md:px-8 md:text-base lg:text-xl',
+        isActive ? 'border-blue-600 font-semibold text-black' : 'text-gray-400 hover:text-gray-600',
         className,
       )}
       onClick={() => onTabChange(value)}
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
 type TabsContentProps = {
   /**
-   * The value of the TabsContent component.
+   * TabsContent 컴포넌트의 값
    */
-  value: string
+  value: string;
   /**
-   * The children of the TabsContent component.
+   * TabsContent 컴포넌트의 자식 요소
    */
-  children: ReactNode
+  children: ReactNode;
   /**
-   * The className of the TabsContent component.
+   * TabsContent 컴포넌트의 className
    */
-  className?: string
-}
+  className?: string;
+};
 
 export const TabsContent = ({ value, children, className }: TabsContentProps) => {
-  const { activeTab } = useTabsContext()
-  const isActive = activeTab === value
+  const { activeTab } = useTabsContext();
+  const isActive = activeTab === value;
 
-  if (!isActive) return null
+  if (!isActive) return null;
 
   return (
-    <div role="tabpanel" id={`panel-${value}`} aria-labelledby={`tab-${value}`} className={cn('w-full p-4', className)}>
+    <div
+      role="tabpanel"
+      id={`panel-${value}`}
+      aria-labelledby={`tab-${value}`}
+      className={cn('w-full p-4', className)}
+    >
       {children}
     </div>
-  )
-}
+  );
+};
