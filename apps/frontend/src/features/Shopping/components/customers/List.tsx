@@ -8,6 +8,7 @@ import { Loading } from '@/shared/components/Loading';
 import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/shared/components/ErrorBoundary';
 import { Suspense } from 'react';
+import { Text } from '@/shared/components/Text';
 
 export const List = () => {
   const { sortByPrice, handleSortByPriceChange } = useSortByPrice();
@@ -15,6 +16,9 @@ export const List = () => {
 
   return (
     <Flex dir="col" gap={4}>
+      <Text type="Title" weight="semibold">
+        고객 목록
+      </Text>
       <Flex dir="row" gap={4} justifyContent="between" wrap="wrap" className="w-full">
         <SearchInput
           customerName={customerName}

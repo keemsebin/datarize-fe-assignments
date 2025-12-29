@@ -25,3 +25,13 @@ export type Customer = {
   count: number;
   totalAmount: number;
 };
+
+export type CustomerPurchaseResponse = CustomerPurchase[];
+
+export type CustomerPurchase = {
+  date: string;
+  imgSrc: string;
+  price: number;
+  product: string;
+  quantity: number;
+};

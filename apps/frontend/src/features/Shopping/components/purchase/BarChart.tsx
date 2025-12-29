@@ -13,7 +13,7 @@ import { Text } from '@/shared/components/Text';
 import { Flex } from '@/shared/components/Flex';
 import { chartColors } from '@/shared/styles/chart';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { shoppingQueryOptions } from '@/apis/shopping.queries';
+import { shoppingQueryOptions } from '@/features/Shopping/api/shopping.queries';
 
 type DateRange = {
   from: string;

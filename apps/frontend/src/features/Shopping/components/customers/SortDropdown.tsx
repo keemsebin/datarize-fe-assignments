@@ -1,4 +1,4 @@
-import { SortBy } from '@/apis/shopping.types';
+import { SortBy } from '@/features/Shopping/api/shopping.types';
 import { Dropdown } from '@/shared/components/Dropdown';
 
 type SortDropdownProps = {

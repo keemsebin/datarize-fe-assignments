@@ -1,4 +1,4 @@
-import { PurchaseFrequencyResponse } from '@/apis/shopping.types';
+import { PurchaseFrequencyResponse } from '@/features/Shopping/api/shopping.types';
 import { formatPriceRange } from './formatPriceRange';
 
 export const transformChartData = (data: PurchaseFrequencyResponse) => {

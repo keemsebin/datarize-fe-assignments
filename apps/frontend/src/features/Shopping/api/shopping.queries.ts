@@ -1,7 +1,8 @@
 import { queryOptions } from '@tanstack/react-query';
-import { fetcher } from './fetcher';
+import { fetcher } from '../../../apis/fetcher';
 import {
   CustomerPurchaseRequest,
+  CustomerPurchaseResponse,
   CustomerResponse,
   PurchaseFrequencyRequest,
   PurchaseFrequencyResponse,
@@ -42,6 +43,13 @@ export const shoppingQueryOptions = {
       queryKey: shoppingQueryKeys.customers.customers({ sortBy, name }),
       queryFn: () => {
         return fetcher.get<CustomerResponse>(`api/customers?sortBy=${sortBy ?? ''}&name=${name}`);
+      },
+    }),
+  customersPurchases: (customerId: number) =>
+    queryOptions({
+      queryKey: shoppingQueryKeys.customers.customersPurchases(customerId),
+      queryFn: () => {
+        return fetcher.get<CustomerPurchaseResponse>(`api/customers/${customerId}/purchases`);
       },
     }),
 };
