@@ -32,7 +32,11 @@ export const BarChart = ({ dateRange }: BarChartProps) => {
   const maxCount = calculateMaxCount(purchaseFrequencyData);
 
   return (
-    <Flex dir="col" className="h-[600px] w-full outline-none">
+    <Flex
+      dir="col"
+      className="h-[600px] w-full outline-none"
+      data-testid="purchase-frequency-chart"
+    >
       <ResponsiveContainer width="100%" height="100%">
         <RechartsBarChart data={chartData} margin={{ top: 40, right: 30, left: 30, bottom: 20 }}>
           <XAxis
