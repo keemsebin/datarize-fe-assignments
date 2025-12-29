@@ -1,4 +1,3 @@
-import { PurchaseFrequencyResponse } from '@/apis/shopping.types';
 import {
   BarChart as RechartsBarChart,
   Bar,
@@ -13,14 +12,28 @@ import { calculateMaxCount } from '../../utils/calculateMaxCount';
 import { Text } from '@/shared/components/Text';
 import { Flex } from '@/shared/components/Flex';
 import { chartColors } from '@/shared/styles/chart';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { shoppingQueryOptions } from '@/apis/shopping.queries';
 
-type BarChartProps = {
-  data: PurchaseFrequencyResponse;
+type DateRange = {
+  from: string;
+  to: string;
 };
 
-export const BarChart = ({ data }: BarChartProps) => {
-  const chartData = transformChartData(data);
-  const maxCount = calculateMaxCount(data);
+type BarChartProps = {
+  dateRange: DateRange;
+};
+
+export const BarChart = ({ dateRange }: BarChartProps) => {
+  const { data: purchaseFrequencyData } = useSuspenseQuery(
+    shoppingQueryOptions.purchaseFrequency({
+      from: dateRange.from,
+      to: dateRange.to,
+    }),
+  );
+
+  const chartData = transformChartData(purchaseFrequencyData);
+  const maxCount = calculateMaxCount(purchaseFrequencyData);
 
   return (
     <Flex dir="col" className="h-[600px] w-full">
@@ -73,17 +86,21 @@ type TooltipProps = {
 const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
   if (active && payload && payload.length) {
     return (
-      <div className="min-w-[140px] rounded-lg border border-gray-200 bg-white p-4 shadow-lg">
+      <Flex
+        dir="col"
+        gap={2}
+        className="min-w-[140px] rounded-lg border border-gray-200 bg-white p-4 shadow-lg"
+      >
         <Text type="Label" weight="semibold" className="mb-2 text-gray-700">
           가격대: {label}
         </Text>
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-blue-500" />
+        <Flex dir="row" gap={2} alignItems="center">
+          <div className="h-2 w-2 rounded-full bg-blue-500" />
           <Text type="Body" weight="medium" className="text-blue-600">
             구매 횟수: <span className="font-bold text-blue-700">{payload[0].value}건</span>
           </Text>
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     );
   }
   return null;

@@ -1,6 +1,9 @@
-import { shoppingQueryOptions } from '@/apis/shopping.queries';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { QueryErrorResetBoundary } from '@tanstack/react-query';
+
+import { ErrorBoundary } from '@/shared/components/ErrorBoundary';
 import { Flex } from '@/shared/components/Flex/Flex';
+import { Loading } from '@/shared/components/Loading';
 import { DateRangePicker } from './DateRangePicker';
 import { useDateRange } from '../../hooks/useDateRange';
 import { BarChart } from './BarChart';
@@ -8,17 +11,29 @@ import { BarChart } from './BarChart';
 export const PurchaseFrequencyChart = () => {
   const { dateRange, handleDateChange } = useDateRange();
 
-  const { data: purchaseFrequencyData } = useSuspenseQuery(
-    shoppingQueryOptions.purchaseFrequency({
-      from: dateRange.from,
-      to: dateRange.to,
-    }),
-  );
-
   return (
     <Flex dir="col" gap={6} className="w-full">
       <DateRangePicker dateRange={dateRange} onDateChange={handleDateChange} />
-      <BarChart data={purchaseFrequencyData} />
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary onRetry={reset}>
+            <Suspense
+              fallback={
+                <Flex
+                  dir="col"
+                  alignItems="center"
+                  justifyContent="center"
+                  className="h-[300px] w-full"
+                >
+                  <Loading size="lg" />
+                </Flex>
+              }
+            >
+              <BarChart dateRange={dateRange} />
+            </Suspense>
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
     </Flex>
   );
 };
