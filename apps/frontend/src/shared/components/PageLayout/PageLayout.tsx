@@ -1,9 +1,9 @@
-import { Flex } from "../Flex"
+import { Flex } from '../Flex';
 
-export  const PageLayout = ({ children }: { children: React.ReactNode }) => {
+export const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Flex dir="col" gap={16} className="p-10 max-w-7xl mx-auto">
+    <Flex dir="col" gap={16} className="mx-auto max-w-7xl p-4 md:p-10">
       {children}
     </Flex>
-  )
-}
+  );
+};
