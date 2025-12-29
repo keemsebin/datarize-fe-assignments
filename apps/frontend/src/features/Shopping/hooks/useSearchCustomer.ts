@@ -1,19 +1,19 @@
 import { useState } from 'react';
 
 export const useSearchCustomer = () => {
-  const [search, setSearch] = useState('');
+  const [customerName, setCustomerName] = useState('');
 
-  const handleSearchChange = (search: string) => {
-    setSearch(search);
+  const handleCustomerNameChange = (customerName: string) => {
+    setCustomerName(customerName);
   };
 
-  const handleResetSearch = () => {
-    setSearch('');
+  const handleResetCustomerName = () => {
+    setCustomerName('');
   };
 
   return {
-    search,
-    handleSearchChange,
-    handleResetSearch,
+    customerName,
+    handleCustomerNameChange,
+    handleResetCustomerName,
   };
 };
