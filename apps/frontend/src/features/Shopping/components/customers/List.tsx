@@ -16,8 +16,8 @@ export const List = () => {
 
   return (
     <Flex dir="col" gap={4}>
-      <Text type="Title" weight="semibold">
-        고객 목록
+      <Text as="h2" type="Heading" weight="semibold">
+        고객 검색
       </Text>
       <Flex dir="row" gap={4} justifyContent="between" wrap="wrap" className="w-full">
         <SearchInput

@@ -27,7 +27,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
+
     "types": ["vitest/globals"]
   },
-  "include": ["src", "global.d.ts", ".storybook/*"]
+  "include": ["src", "__test__", "global.d.ts", ".storybook/*"]
 }
