@@ -1,4 +1,5 @@
 import ky, { type Options, type ResponsePromise } from 'ky';
+import { getUserFriendlyErrorMessage } from './utils/errorMessages';
 
 const defaultOption: Options = {
   retry: 0,
@@ -12,7 +13,25 @@ export const instance = ky.create({
   headers: {
     'content-type': 'application/json',
   },
-  hooks: {},
+  hooks: {
+    afterResponse: [
+      async (_request, _options, response) => {
+        if (!response.ok) {
+          const errorBody = await response.json();
+          const errorMessage =
+            errorBody && typeof errorBody === 'object' && 'error' in errorBody
+              ? errorBody.error
+              : '';
+          throw new Error(
+            getUserFriendlyErrorMessage({
+              response: { status: response.status, body: { error: errorMessage } },
+            }),
+          );
+        }
+        return response;
+      },
+    ],
+  },
   ...defaultOption,
 });
 
