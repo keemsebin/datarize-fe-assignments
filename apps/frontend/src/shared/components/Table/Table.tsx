@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { ComponentProps, type ReactNode } from 'react';
 import { cn } from '@/shared/utils/cn';
 
 export type TableProps = {
@@ -67,11 +67,14 @@ export type TableRowProps = {
    * TableRow 컴포넌트의 자식 요소
    */
   children: ReactNode;
-};
+} & ComponentProps<'tr'>;
 
-export const TableRow = ({ children, className, hover = false }: TableRowProps) => {
+export const TableRow = ({ children, className, hover = false, ...props }: TableRowProps) => {
   return (
-    <tr className={cn('transition-colors', hover && 'cursor-pointer hover:bg-gray-50', className)}>
+    <tr
+      className={cn('transition-colors', hover && 'cursor-pointer hover:bg-gray-50', className)}
+      {...props}
+    >
       {children}
     </tr>
   );

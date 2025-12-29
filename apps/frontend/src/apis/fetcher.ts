@@ -1,5 +1,5 @@
 import ky, { type Options, type ResponsePromise } from 'ky';
-import { getUserFriendlyErrorMessage } from './utils/errorMessages';
+import { getUserFriendlyErrorMessage } from './errorMessages';
 
 const defaultOption: Options = {
   retry: 0,
