@@ -33,7 +33,6 @@ export const List = () => {
               handleResetCustomerName();
               reset();
             }}
-            onRetry={reset}
           >
             <Suspense fallback={<Loading className="h-[500px] w-full" />}>
               <CustomerTable sortByPrice={sortByPrice} customerName={customerName} />

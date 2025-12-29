@@ -16,7 +16,7 @@ export const PurchaseFrequencyChart = () => {
       <DateRangePicker dateRange={dateRange} onDateChange={handleDateChange} />
       <QueryErrorResetBoundary>
         {({ reset }) => (
-          <ErrorBoundary onRetry={reset}>
+          <ErrorBoundary onReset={reset}>
             <Suspense fallback={<Loading size="lg" className="h-[300px] w-full" />}>
               <BarChart dateRange={dateRange} />
             </Suspense>
