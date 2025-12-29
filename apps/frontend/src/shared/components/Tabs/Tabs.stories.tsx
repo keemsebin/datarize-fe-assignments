@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Tabs, TabsTrigger, TabList, TabsContent } from '.'
+import { Tabs, TabsTrigger, TabList, TabsContent } from '.';
 
 const meta = {
   title: 'components/Tabs',
@@ -14,18 +14,18 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Tabs>
+} satisfies Meta<typeof Tabs>;
 
-export default meta
-type Story = StoryObj<typeof Tabs>
+export default meta;
+type Story = StoryObj<typeof Tabs>;
 
 export const Basic: Story = {
-  render: () => {
-    const [activeTab, setActiveTab] = useState('chart')
+  render: function BasicStory() {
+    const [activeTab, setActiveTab] = useState<string>('chart');
 
     const handleTabChange = (value: string) => {
-      setActiveTab(value)
-    }
+      setActiveTab(value);
+    };
 
     return (
       <Tabs value={activeTab} onValueChange={handleTabChange}>
@@ -40,6 +40,6 @@ export const Basic: Story = {
           <div className="p-4">고객 목록 영역</div>
         </TabsContent>
       </Tabs>
-    )
+    );
   },
-}
+};
