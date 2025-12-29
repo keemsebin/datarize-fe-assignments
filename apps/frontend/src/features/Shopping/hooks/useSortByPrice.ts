@@ -2,14 +2,14 @@ import { SortBy } from '@/apis/shopping.types';
 import { useState } from 'react';
 
 export const useSortByPrice = () => {
-  const [sortBy, setSortBy] = useState<SortBy | null>(null);
+  const [sortByPrice, setSortByPrice] = useState<SortBy | null>(null);
 
-  const handleSortByChange = (sortBy: SortBy | null) => {
-    setSortBy(sortBy);
+  const handleSortByPriceChange = (sortBy: SortBy | null) => {
+    setSortByPrice(sortBy);
   };
 
   return {
-    sortBy,
-    handleSortByChange,
+    sortByPrice,
+    handleSortByPriceChange,
   };
 };
