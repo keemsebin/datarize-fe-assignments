@@ -1,9 +1,6 @@
-import { Suspense } from 'react';
-import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import { Text } from '@/shared/components/Text';
 import { Flex } from '../../shared/components/Flex/Flex';
 import { Tabs, TabsContent, TabList, TabsTrigger } from '@/shared/components/Tabs';
-import { ErrorBoundary } from '@/shared/components/ErrorBoundary';
 import { PurchaseFrequencyChart } from './components/purchase/PurchaseFrequencyChart';
 import { List } from './components/customers/List';
 import { useTabs } from '../../shared/hooks/useTabs';
@@ -30,35 +27,18 @@ export const ShoppingPage = () => {
         쇼핑몰 구매 데이터 대시보드
       </Text>
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <TabList>
+        <TabList className="w-1/3">
           {TABS.map((tab) => (
             <TabsTrigger key={tab.value} value={tab.value}>
               {tab.label}
             </TabsTrigger>
           ))}
         </TabList>
-        {TABS.map((tab) => {
-          const Component = tab.component;
-          return (
-            <TabsContent key={tab.value} value={tab.value}>
-              <QueryErrorResetBoundary>
-                {({ reset }) => (
-                  <ErrorBoundary onReset={reset}>
-                    <Suspense
-                      fallback={
-                        <Text type="Body" className="text-gray-500">
-                          로딩 중...
-                        </Text>
-                      }
-                    >
-                      <Component />
-                    </Suspense>
-                  </ErrorBoundary>
-                )}
-              </QueryErrorResetBoundary>
-            </TabsContent>
-          );
-        })}
+        {TABS.map((tab) => (
+          <TabsContent key={tab.value} value={tab.value}>
+            <tab.component />
+          </TabsContent>
+        ))}
       </Tabs>
     </Flex>
   );
