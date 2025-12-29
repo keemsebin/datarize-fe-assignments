@@ -11,7 +11,7 @@ import { transformChartData } from '../../utils/transformChartData';
 import { calculateMaxCount } from '../../utils/calculateMaxCount';
 import { Text } from '@/shared/components/Text';
 import { Flex } from '@/shared/components/Flex';
-import { chartColors } from '@/shared/styles/chart';
+import { chartColors } from '@/features/Shopping/constants/chartColors';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { shoppingQueryOptions } from '@/features/Shopping/api/shopping.queries';
 
