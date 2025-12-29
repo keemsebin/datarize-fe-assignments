@@ -3,7 +3,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { Flex } from '@/shared/components/Flex/Flex';
 import { DateRangePicker } from './DateRangePicker';
 import { useDateRange } from '../../hooks/useDateRange';
-import { PurchaseBarChart } from './PurchaseBarChart';
+import { BarChart } from './BarChart';
 
 export const PurchaseFrequencyChart = () => {
   const { dateRange, handleDateChange } = useDateRange();
@@ -18,7 +18,7 @@ export const PurchaseFrequencyChart = () => {
   return (
     <Flex dir="col" gap={6} className="w-full">
       <DateRangePicker dateRange={dateRange} onDateChange={handleDateChange} />
-      <PurchaseBarChart data={purchaseFrequencyData} />
+      <BarChart data={purchaseFrequencyData} />
     </Flex>
   );
 };
