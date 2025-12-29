@@ -55,7 +55,7 @@ export const Modal = ({ isOpen, onClose, children, className }: ModalProps) => {
             variant="ghost"
             size="sm"
             onClick={onClose}
-            className="absolute top-4 right-4 h-8 w-8 p-0"
+            className="absolute top-4 right-4 h-8 w-8 p-0 focus:ring-0"
             aria-label="닫기"
           >
             X
