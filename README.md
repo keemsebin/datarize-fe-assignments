@@ -8,7 +8,7 @@
 VITE_API_ENDPOINT=http://localhost:4000/
 ```
 
-`.env` 파일을 생성하거나 환경 변수로 설정해주세요.
+`.env` 파일을 생성하거나 `apps/frontend/src/apis/fetcher.ts` 경로의 API_ENDPOINT를 VITE_API_ENDPOINT 값으로 변경해주셔야 합니다.
 
 ## 기술 스택 선택 이유
 
