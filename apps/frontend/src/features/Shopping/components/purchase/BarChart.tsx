@@ -15,6 +15,7 @@ import { chartColors } from '@/features/Shopping/constants/chartColors';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { shoppingQueryOptions } from '@/features/Shopping/api/shopping.queries';
 import { PurchaseFrequencyRequest } from '../../api/shopping.types';
+import { toStartOfDayISO, toEndOfDayISO } from '../../utils/formatISO';
 
 type BarChartProps = {
   dateRange: PurchaseFrequencyRequest;
@@ -23,8 +24,8 @@ type BarChartProps = {
 export const BarChart = ({ dateRange }: BarChartProps) => {
   const { data: purchaseFrequencyData } = useSuspenseQuery(
     shoppingQueryOptions.purchaseFrequency({
-      from: dateRange.from,
-      to: dateRange.to,
+      from: toStartOfDayISO(dateRange.from),
+      to: toEndOfDayISO(dateRange.to),
     }),
   );
 

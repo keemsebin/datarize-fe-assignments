@@ -2,6 +2,7 @@ import { Flex } from '@/shared/components/Flex/Flex';
 import { Input } from '@/shared/components/Input';
 import { Text } from '@/shared/components/Text';
 import { PurchaseFrequencyRequest } from '../../api/shopping.types';
+import { DEFAULT_DATE_RANGE } from '../../hooks/useDateRange';
 
 type DateRangePickerProps = {
   dateRange: PurchaseFrequencyRequest;
@@ -19,6 +20,7 @@ export const DateRangePicker = ({ dateRange, onDateChange }: DateRangePickerProp
           type="date"
           name="from"
           value={dateRange.from}
+          min={DEFAULT_DATE_RANGE.from}
           max={dateRange.to}
           onChange={onDateChange}
         />
@@ -30,7 +32,7 @@ export const DateRangePicker = ({ dateRange, onDateChange }: DateRangePickerProp
           name="to"
           value={dateRange.to}
           min={dateRange.from}
-          max={new Date().toISOString().split('T')[0]}
+          max={DEFAULT_DATE_RANGE.to}
           onChange={onDateChange}
         />
       </Flex>
